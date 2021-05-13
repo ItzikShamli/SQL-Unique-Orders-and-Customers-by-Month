@@ -1,0 +1,10 @@
+SELECT
+    CONCAT(YEAR(order_date),"-",DATE_FORMAT(order_date, "%m")) AS month,
+    COUNT(order_id) AS order_count,
+    COUNT(DISTINCT customer_id) AS customer_count
+FROM
+    Orders
+WHERE
+    invoice > 20
+GROUP BY
+    CONCAT(YEAR(order_date),"-",MONTH(order_date))
